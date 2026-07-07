@@ -1,2 +1,27 @@
-<h1>Olá mundo</h1>
-{{ form }}
+{% extends 'recipes/pages/base.html' %}
+{% block title %} Register {% endblock %}
+{% block body %}
+    <div class="main-content center container">
+        <h2>Register</h2>
+    </div>
+    <div class="main-content container">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="form-content form-content-grid">
+                {% for fild in form %}
+                    <div class="form-group">
+                        <label for="{{ fild.id_for_label }}">{{ fild.label }}</label>
+                        {{ fild }}
+                        {% if fild.help_text %}
+                            <p class="help-text">{{ fild.help_text }}</p>
+                        {% endif %}
+                        {{ fild.errors }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                <button type="submit">Send</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
