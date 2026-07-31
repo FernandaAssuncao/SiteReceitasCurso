@@ -5,6 +5,15 @@
         <h2>Register</h2>
     </div>
     <div class="main-content container">
+        <div class="main-content center container messages-container">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="message {{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
         <form action="{% url 'authors:create' %}" method="POST">
             {% csrf_token %}
             <div class="form-content form-content-grid">
