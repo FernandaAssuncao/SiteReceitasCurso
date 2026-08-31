@@ -32,7 +32,6 @@ class RegisterForm(forms.ModelForm):
         add_placeholder(self.fields['last_name'],'Your last name')
 
 
-
     password = forms.CharField(
         required=True,
         widget=forms.PasswordInput(attrs={
